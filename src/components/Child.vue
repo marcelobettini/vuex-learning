@@ -1,7 +1,7 @@
 <template>
   <div>
-    <button type="button" @click="$store.commit('increment')">+</button>
-    <button type="button" @click="$store.commit('decrement')">-</button>
+    <button type="button" class="btn btn-success mt-4 mx-1" @click="$store.commit('increment')">+</button>
+    <button type="button" class="btn btn-success mt-4 mx-1" @click="$store.commit('decrement')">-</button>
   </div>
 </template>
 
@@ -12,17 +12,12 @@ export default {
 </script>
 
 <style>
-button, button::before {
+.btn {
+  width: 40px;
   font-size: 20px;
-  color: red ;
-  background-color: cornsilk;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  margin: 5px;
-  border: 1px solid blueviolet;
-  border-radius: 10%;
-  width: 30px;
-  height: 30px;
+  padding: 0px;
 }
+
 
 
 </style>
