@@ -6,18 +6,29 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     number: 0,
+    characters: [],
   },
   getters: {
-    n: state => state.number
+    n: (state) => state.number,
   },
   mutations: {
     increment(state) {
       state.number++;
     },
-    decrement(state,n) {
+    decrement(state, n) {
       state.number -= n;
     },
+    loadCharacters(state, char) {      
+      state.characters = char.results;
+    },
   },
-  actions: {},
+  actions: {
+    getCharacters: async function({ commit }) {
+      const data = await fetch(`https://rickandmortyapi.com/api/character`);
+      const char = await data.json();
+      console.log(char)
+      commit('loadCharacters', char )
+    },
+  },
   modules: {},
 });
