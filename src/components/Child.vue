@@ -26,7 +26,7 @@
       Fetch
     </button>
       </div>
-      <ul v-for="item in $store.state.characters" :key="item.id">
+      <ul v-for="item in characters" :key="item.id">
         <li>{{item.name.toUpperCase()}} | {{item.species}} | {{item.gender.toUpperCase()}} | {{item.status}}</li>
       </ul>
       {{characters.results}}
@@ -40,8 +40,10 @@ import { mapActions } from "vuex";
 import { mapMutations } from "vuex";
 
 export default {
-  methods: {
+  computed: {
     ...mapState(["number", "characters"]),
+  },
+  methods: {    
     ...mapActions(["getCharacters"]),
     ...mapMutations(["increment", "decrement", "loadCharacters"]),    
   },
