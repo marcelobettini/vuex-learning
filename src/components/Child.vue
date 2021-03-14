@@ -1,14 +1,27 @@
 <template>
   <div>
-    <button type="button" class="btn btn-success mt-4 mx-1" @click="$store.commit('increment')">+</button>
-    <button type="button" class="btn btn-success mt-4 mx-1" @click="$store.commit('decrement')">-</button>
+    <!-- accessing mutation: long version -->
+    <button
+      type="button"
+      class="btn btn-success mt-4 mx-1"
+      @click="$store.commit('increment')"
+    >
+      +
+    </button>
+    <!-- mapMutations shortens this line: @click="$store.commit('decrement')" -->
+    <button type="button" class="btn btn-success mt-4 mx-1" @click="decrement(3)">
+      -
+    </button>
   </div>
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
-
-}
+  methods: {
+    ...mapMutations(["increment", "decrement"]),
+  },
+};
 </script>
 
 <style>
@@ -17,7 +30,4 @@ export default {
   font-size: 20px;
   padding: 0px;
 }
-
-
-
 </style>
