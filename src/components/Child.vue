@@ -18,18 +18,24 @@
     </button>
     <div>
       <div>
-        <button id="btnFetch"
-      type="button"
-      class="btn btn-success mt-4 mx-1"
-      @click="getCharacters"
-    >
-      Fetch
-    </button>
+        <button
+          id="btnFetch"
+          type="button"
+          class="btn btn-success mt-4 mx-1"
+          @click="getCharacters"
+        >
+          Fetch
+        </button>
       </div>
-      <ul v-for="item in characters" :key="item.id">
-        <li>{{item.name.toUpperCase()}} | {{item.species}} | {{item.gender.toUpperCase()}} | {{item.status}}</li>
+      <div class="container d-flex flex-wrap mt-4">
+      <ul class="col-6" v-for="item in characters" :key="item.id">
+        <li>
+          {{ item.name.toUpperCase() }} | {{ item.species }} |
+          {{ item.gender.toUpperCase() }} | {{ item.status }}
+        </li>
       </ul>
-      {{characters.results}}
+      {{ characters.results }}
+    </div>
     </div>
   </div>
 </template>
@@ -43,9 +49,9 @@ export default {
   computed: {
     ...mapState(["number", "characters"]),
   },
-  methods: {    
+  methods: {
     ...mapActions(["getCharacters"]),
-    ...mapMutations(["increment", "decrement", "loadCharacters"]),    
+    ...mapMutations(["increment", "decrement", "loadCharacters"]),
   },
 };
 </script>
@@ -59,7 +65,11 @@ export default {
 #btnFetch {
   width: 80px;
 }
+ul {
+  background-color:burlywood ;
+  border: 1px solid black;
+}
 li {
-  list-style-type:none ;
+  list-style-type: none;
 }
 </style>
