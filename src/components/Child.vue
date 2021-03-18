@@ -17,16 +17,7 @@
       -
     </button>
     <div>
-      <div>
-        <button
-          id="btnFetch"
-          type="button"
-          class="btn btn-success mt-4 mx-1"
-          @click="getCharacters(`character/?page=${page}`)"
-        >
-          Fetch
-        </button>
-      </div>
+      
       <div class="container d-flex flex-wrap mt-4">
       <ul class="col-6" v-for="item in characters" :key="item.id">
         <li>

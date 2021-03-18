@@ -23,6 +23,16 @@
       <button type="button" @click="changePage('prev')">&lt;&lt;&lt;</button>
       <button type="button" @click="changePage('next')">&gt;&gt;&gt;</button>
     </div>
+    <div>
+      <button
+        id="btnFetch"
+        type="button"
+        class="btn btn-success mt-4 mx-1"
+        @click="dispatch()"
+      >
+        Fetch
+      </button>
+    </div>
   </div>
 </template>
 
@@ -44,6 +54,24 @@ export default {
   },
   methods: {
     ...mapActions(["getCharacters"]),
+    dispatch() {
+      switch (this.selected) {
+        case "all":
+          this.payload = `character/?page=${this.page}`;
+          break;
+        case "alive":
+          this.payload = `character/?page=${this.page}&status=${this.selected}`;
+          break;
+        case "dead":
+          this.payload = `character/?page=${this.page}&status=${this.selected}`;
+          break;
+        case "unknown":
+          this.payload = `character/?page=${this.page}&status=${this.selected}`;
+          break;
+        default:
+      }
+      this.getCharacters(this.payload);
+    },
     changePage(page) {
       if (page == "next") this.$store.state.page++;
       else {
@@ -63,11 +91,10 @@ export default {
           this.payload = `character/?page=${this.page}&status=${this.selected}`;
           break;
         default:
-      }      
+      }
       this.getCharacters(this.payload);
     },
   },
-  
 };
 </script>
 
