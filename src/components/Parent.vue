@@ -19,7 +19,7 @@
       <span>{{ selected }}</span>
     </div>
     <div>
-      <h4>Pagination: {{ page }} of {{ pagination.pages }} pages</h4>
+      <h4 v-show="toggleShow">Pagination: {{ page }} of {{ pagination.pages }} pages</h4>
       <button type="button" @click="changePage('prev')">&lt;&lt;&lt;</button>
       <button type="button" @click="changePage('next')">&gt;&gt;&gt;</button>
     </div>
@@ -47,12 +47,15 @@ export default {
     };
   },
   computed: {
+    toggleShow: function() {
+      return this.pagination.pages > 0
+    },
     n() {
       return this.$store.state.number + 1;
     },
     ...mapState(["number", "page", "pagination"]),
   },
-  methods: {
+  methods: {    
     ...mapActions(["getCharacters"]),
     dispatch() {
       switch (this.selected) {
