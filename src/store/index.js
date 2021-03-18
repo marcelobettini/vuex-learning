@@ -8,7 +8,8 @@ export default new Vuex.Store({
     number: 0,
     characters: [],
     pagination: [],
-    page: 1
+    page: 1,
+    baseURL: 'https://rickandmortyapi.com/api/'
   },
   getters: {
     n: (state) => state.number,
@@ -26,8 +27,8 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    getCharacters: async function({ commit }) {
-      const data = await fetch(`https://rickandmortyapi.com/api/character?page=${this.state.page}`);
+    getCharacters: async function({ commit }, payload) {      
+      const data = await fetch(`${this.state.baseURL}${payload}`);
       const char = await data.json();      
       commit('loadCharacters', char )
     },

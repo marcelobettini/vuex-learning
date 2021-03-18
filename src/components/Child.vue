@@ -22,7 +22,7 @@
           id="btnFetch"
           type="button"
           class="btn btn-success mt-4 mx-1"
-          @click="getCharacters"
+          @click="getCharacters(`character/?page=${page}`)"
         >
           Fetch
         </button>
@@ -47,7 +47,7 @@ import { mapMutations } from "vuex";
 
 export default {
   computed: {
-    ...mapState(["number", "characters"]),
+    ...mapState(["number", "characters", "page"]),
   },
   methods: {
     ...mapActions(["getCharacters"]),
