@@ -1,10 +1,15 @@
 <template>
+<div>
+
+
   <div class="about">
     <h2>Number is in parent.vue and buttons in child.vue</h2>
     <parent/>
     <child />
   </div>
+  </div>
 </template>
+
 <script>
 import child from '../components/Child.vue'
 import parent from '../components/Parent.vue'

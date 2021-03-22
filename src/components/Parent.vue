@@ -1,5 +1,6 @@
 <template>
   <div>
+    
     <div>
       <h5>Number long version: {{ $store.state.number }}</h5>
       <h5>Number (n() + 1) binded to computed prop: {{ n }}</h5>
@@ -38,6 +39,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
+
 
 export default {
   data() {
